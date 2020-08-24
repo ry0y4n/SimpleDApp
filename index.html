@@ -58,10 +58,45 @@
       web3.eth.defaultAccount = web3.eth.accounts[0];
 
       // Set Contract Abi
-      var contractAbi = []; // Add Your Contract ABI here!!!
+      var contractAbi = [
+        {
+          "constant": false,
+          "inputs": [
+            {
+              "name": "_name",
+              "type": "string"
+            }
+          ],
+          "name": "setCandidate",
+          "outputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "payable": false,
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "constant": true,
+          "inputs": [],
+          "name": "candidateName",
+          "outputs": [
+            {
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ]; // Add Your Contract ABI here!!!
 
       // Set Contract Address
-      var contractAddress = ''; // Add Your Contract address here!!!
+      var contractAddress = '0x69E311DCfCd6425947866E8ac3Efb585Fe49CEec'; // Add Your Contract address here!!!
 
       // Set the Contract
       var contract = web3.eth.contract(contractAbi).at(contractAddress);
@@ -73,7 +108,7 @@
 
       // Change the Candidate Name
       $('form').on('submit', function(event) {
-        event.preventDefault();
+        // event.preventDefault();
         contract.setCandidate($('input').val());
       })
 
